@@ -1,0 +1,12 @@
+{
+  "validUser": {
+    "firstName": "ValidFirstName",
+    "lastName": "ValidFirstName",
+    "postalCode": "123456"
+  },
+  "invalidUser": {
+    "invalidFirstName": "1111111111111111111111111111111",
+    "invalidLastName": "1111111111111111111111111111111",
+    "invalidPostalCode": "#####"
+  }
+}
