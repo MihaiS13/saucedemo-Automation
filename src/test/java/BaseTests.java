@@ -33,7 +33,7 @@ public class BaseTests {
     @BeforeMethod
     public void before() {
         driver = DriverFactory.getDriver();
-
+        DriverFactory.driver = driver;
         // inițializare WaitUtils și Pages
         waitUtils = new WaitUtils(driver);
         loginPage = new LoginPage(driver, waitUtils);

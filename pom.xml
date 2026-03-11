@@ -43,6 +43,13 @@
             <scope>test</scope>
         </dependency>
 
+        <!-- Allure Java Commons  -->
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-java-commons</artifactId>
+            <version>${allure.version}</version>
+        </dependency>
+
         <!-- JSON parser -->
         <dependency>
             <groupId>com.googlecode.json-simple</groupId>
@@ -68,14 +75,12 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.2.5</version>
                 <configuration>
-
                     <argLine>
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
                     </argLine>
                     <systemPropertyVariables>
                         <allure.results.directory>${project.build.directory}/allure-results</allure.results.directory>
                     </systemPropertyVariables>
-
                     <useSystemClassLoader>false</useSystemClassLoader>
                 </configuration>
                 <dependencies>
