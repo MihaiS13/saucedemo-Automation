@@ -9,7 +9,9 @@ import testData.URL;
 import testData.classes.CheckoutData;
 import testData.classes.ExpectedTotals;
 import testData.classes.LoginData;
+import org.testng.annotations.Listeners;
 
+@Listeners({AllureListener.class})
 public class BaseTests {
 
     protected WebDriver driver;
