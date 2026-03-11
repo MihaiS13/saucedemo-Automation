@@ -1,0 +1,41 @@
+name: Selenium Tests with Allure
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Descarcă codul din repository
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # 2. Configurează Java 17 (Temurin este distribuția recomandată)
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: 'maven' # Cache-ul ajută la rulări mai rapide data viitoare
+
+      # 3. Rulează testele (Forțăm calea către aspectjweaver pentru Linux)
+      - name: Build and run tests
+        run: |
+          mvn clean test -DargLine="-javaagent:${HOME}/.m2/repository/org/aspectj/aspectjweaver/1.9.21/aspectjweaver-1.9.21.jar"
+        continue-on-error: true # Foarte important: raportul se generează chiar dacă testele pică
+
+      # 4. Generează raportul Allure (Transformă JSON în HTML)
+      - name: Generate Allure report
+        run: mvn allure:report
+
+      # 5. Salvează raportul ca Artefact (îl vei putea descărca ca ZIP)
+      - name: Upload Allure report
+        uses: actions/upload-artifact@v3
+        with:
+          name: allure-report-html
+          path: target/site/allure-maven-plugin
