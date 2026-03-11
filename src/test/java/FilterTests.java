@@ -45,7 +45,7 @@ public class FilterTests extends BaseTests {
     @Test
     public void filterByPriceLowToHigh() {
 
-        productsPage.selectSortOption("Prices are not sorted from high to low");
+        productsPage.selectSortOption("Price (low to high)");
 
         List<Double> actualPrices = productsPage.getProductPrices();
 
