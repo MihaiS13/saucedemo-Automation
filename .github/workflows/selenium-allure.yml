@@ -1,8 +1,8 @@
-name: Selenium Tests with Allure
+name: Selenium Tests with Allure Report
 
 on:
   push:
-    branches: [ master ] 
+    branches: [ master ]
   pull_request:
     branches: [ master ]
 
@@ -11,11 +11,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Checkout codul (v4)
+      # 1. Checkout the code from the repository
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # 2. Setare Java 17 (v4)
+      # 2. Set up Java 17 environment
       - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
@@ -23,20 +23,19 @@ jobs:
           distribution: 'temurin'
           cache: 'maven'
 
-      # 3. Build & rulează testele cu Maven
-      - name: Build with Maven and run tests
+      # 3. Run Selenium tests with Maven (using AspectJ agent for Allure)
+      - name: Build and run tests
         run: |
           mvn clean test -DargLine="-javaagent:${HOME}/.m2/repository/org/aspectj/aspectjweaver/1.9.21/aspectjweaver-1.9.21.jar"
-        continue-on-error: true
+        continue-on-error: true # Essential to generate the report even if tests fail
 
-      # 4. Generează raport Allure
+      # 4. Generate the Allure HTML report
       - name: Generate Allure report
         run: mvn allure:report
 
-      # 5. Încarcă raportul ca artefact 
-      - name: Upload Allure report
-        uses: actions/upload-artifact@v4
+      # 5. Deploy the report to GitHub Pages
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          name: allure-report
-          path: target/site/allure-maven-plugin
-          if-no-files-found: warn
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: target/site/allure-maven-plugin
