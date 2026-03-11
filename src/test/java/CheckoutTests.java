@@ -13,8 +13,8 @@ public class CheckoutTests extends BaseTests {
     }
 @Test
     public void checkoutWithInvalidData() {
-    checkoutPage.enterInvalidData(new CheckoutData("checkoutData"));
-    Assert.assertEquals(checkoutPage.getCheckoutHeaderText(), "Checkout: Your Information" , "User should remain on checkout information page when data is invalid");
+    checkoutYourInformationPage.enterInvalidData(new CheckoutData("checkoutData"));
+    Assert.assertEquals(checkoutYourInformationPage.getCheckoutHeaderText(), "Checkout: Your Information" , "User should remain on checkout information page when data is invalid");
     //BUG
 // Expected behavior: stay on Checkout: Your Information
 // Actual behavior: user is redirected to Overview page

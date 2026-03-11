@@ -1,7 +1,11 @@
 import driver.DriverFactory;
 import driver.WaitUtils;
+import io.qameta.allure.Attachment;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
+import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import pages.*;
@@ -11,7 +15,6 @@ import testData.classes.ExpectedTotals;
 import testData.classes.LoginData;
 import org.testng.annotations.Listeners;
 
-@Listeners({AllureListener.class})
 public class BaseTests {
 
     protected WebDriver driver;
@@ -19,7 +22,6 @@ public class BaseTests {
     protected LoginPage loginPage;
     protected ProductsPage productsPage;
     protected CartPage cartPage;
-    protected CheckoutYourInformationPage checkoutPage;
     protected ProductDetailsPage productDetailsPage;
     protected CheckoutOverviewPage checkoutOverviewPage;
     protected CheckoutYourInformationPage checkoutYourInformationPage;
@@ -34,18 +36,17 @@ public class BaseTests {
     public void before() {
         driver = DriverFactory.getDriver();
         DriverFactory.driver = driver;
-        // inițializare WaitUtils și Pages
+        //  WaitUtils and Pages initialization
         waitUtils = new WaitUtils(driver);
         loginPage = new LoginPage(driver, waitUtils);
         productsPage = new ProductsPage(driver, waitUtils);
         cartPage = new CartPage(driver, waitUtils);
-        checkoutPage = new CheckoutYourInformationPage(driver,waitUtils);
         productDetailsPage = new ProductDetailsPage(driver, waitUtils);
         checkoutYourInformationPage = new CheckoutYourInformationPage(driver, waitUtils);
         checkoutOverviewPage = new CheckoutOverviewPage(driver, waitUtils);
         checkoutCompletePage = new CheckoutCompletePage(driver,  waitUtils);
 
-        // inițializare date de login
+        // login and expectedTotals data initialization
         validUser = new LoginData("validUser");
         invalidUser = new LoginData("invalidUser");
         lockedUser = new LoginData("lockedUser");
@@ -56,11 +57,22 @@ public class BaseTests {
 
 
     @AfterMethod
-    public void after() {
+    public void afterMethod(ITestResult result) {
+        // If test fails, take a screenshoot
+        if (result.getStatus() == ITestResult.FAILURE && driver != null) {
+            saveScreenshot(result.getName());
+        }
+
+        // Close the browser.
         if (driver != null) {
-            driver.close();
             driver.quit();
         }
+    }
+
+    // Screenshoot method for Allure
+    @Attachment(value = "Page screenshot", type = "image/png")
+    public byte[] saveScreenshot(String testName) {
+        return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
     }
 
 
