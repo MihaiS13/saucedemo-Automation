@@ -3,7 +3,7 @@ package pages;
 import driver.WaitUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import testData.classes.CheckoutData;
+
 
 public class CheckoutCompletePage extends BasePage {
 

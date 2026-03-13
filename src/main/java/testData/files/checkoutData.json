@@ -1,12 +1,12 @@
 {
   "validUser": {
     "firstName": "ValidFirstName",
-    "lastName": "ValidFirstName",
+    "lastName": "ValidLastName",
     "postalCode": "123456"
   },
   "invalidUser": {
-    "invalidFirstName": "1111111111111111111111111111111",
-    "invalidLastName": "1111111111111111111111111111111",
-    "invalidPostalCode": "#####"
+    "invalidFirstName": "GHKL^AXCHKL(%ASXV527DRDCVTYUMN$",
+    "invalidLastName": "GHKL^AXCHKL(%ASXV527DRDCVTYUMN$",
+    "invalidPostalCode": "##*##"
   }
 }
