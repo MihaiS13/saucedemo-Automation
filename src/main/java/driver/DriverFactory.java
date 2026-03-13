@@ -4,7 +4,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
-import java.time.Duration;
 
 public class DriverFactory {
 
@@ -31,8 +30,8 @@ public class DriverFactory {
         chromeOption.addArguments("disable-extensions"); // Disable extensions
         chromeOption.addArguments("guest"); // Disable change password popup
 
-         driver = new ChromeDriver(chromeOption);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(4));
+        driver = new ChromeDriver(chromeOption);
+
 
         return driver;
     }

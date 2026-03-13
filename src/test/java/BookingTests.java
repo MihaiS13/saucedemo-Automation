@@ -2,7 +2,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import testData.classes.CheckoutData;
-import testData.classes.ExpectedTotals;
+
 
 import java.util.List;
 

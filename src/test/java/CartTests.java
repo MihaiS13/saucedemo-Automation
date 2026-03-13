@@ -1,9 +1,7 @@
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import pages.BasePage;
-import pages.CartPage;
-import pages.ProductsPage;
+
 
 public class CartTests extends BaseTests {
 

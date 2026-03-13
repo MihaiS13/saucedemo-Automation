@@ -10,10 +10,10 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import pages.*;
 import testData.URL;
-import testData.classes.CheckoutData;
+//import testData.classes.CheckoutData;
 import testData.classes.ExpectedTotals;
 import testData.classes.LoginData;
-import org.testng.annotations.Listeners;
+
 
 public class BaseTests {
 

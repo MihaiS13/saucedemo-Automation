@@ -65,17 +65,16 @@ public class ProductsPage extends BasePage {
                 .toList();
     }
 
+
     public void openMenu() {
-        driver.findElement(menuButton).click();
+        waitUtils.visibilityOfElementLocated(menuButton).click();
     }
 
     public void clickLogoutButton() {
-        driver.findElement(logoutButton).click();
+        waitUtils.visibilityOfElementLocated(logoutButton).click();
     }
 
-    public void clickProduct(String productName) {
-
-        By productLocator = By.xpath("//div[text()='" + productName + "']");
+    public void clickProduct(String productName) {By productLocator = By.xpath("//div[text()='" + productName + "']");
 
         waitUtils.visibilityOfElementLocated(productLocator);
 
