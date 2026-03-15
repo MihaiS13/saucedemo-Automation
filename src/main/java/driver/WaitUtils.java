@@ -1,5 +1,4 @@
 package driver;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -26,4 +25,7 @@ public class WaitUtils {
         return wait.until(ExpectedConditions.textToBePresentInElementLocated(locator, text));
     }
 
+    public void clickWhenClickable(By locator) {
+        wait.until(ExpectedConditions.elementToBeClickable(locator)).click();
+    }
 }

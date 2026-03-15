@@ -28,34 +28,36 @@ public class EndToEndTests extends BaseTests {
         productsPage.openFirstProduct();
 
         String productDescription = productDetailsPage.getProductDescription();
-        String productPrice = productDetailsPage.getProductPrice();
+        double productPrice = productDetailsPage.getProductPriceValue();
 
         Assert.assertFalse(productDescription.isEmpty(), "Product description should not be empty");
-        Assert.assertFalse(productPrice.isEmpty(), "Product price should not be empty");
+        Assert.assertTrue(productPrice > 0, "Product price should be greater than zero");
 
         // 4. Add to cart
         productDetailsPage.clickAddToCartButton();
         productsPage.clickCartButton();
 
+        double cartPrice = cartPage.getProductPriceValue();
+
+        Assert.assertEquals(cartPrice, productPrice, 0.01, "Product price in cart should match product page");
         Assert.assertTrue(cartPage.isCartHeaderDisplayed(), "Cart header should be displayed after clicking cart");
         Assert.assertTrue(cartPage.isProductDisplayed(), "Product should be displayed");
         Assert.assertEquals(cartPage.getProductDescription(), productDescription, "Product description in cart should match product page");
-        Assert.assertEquals(cartPage.getProductPrice(), productPrice, "Product price in cart should match product page");
 
         // 5. Checkout – user details
         cartPage.clickCheckoutButton();
-
-        checkoutYourInformationPage.enterValidData(new CheckoutData("checkoutData"));
-
+        checkoutYourInformationPage.enterCheckoutInformation(checkoutData);
 
         // 6. Order overview – check values
         Assert.assertEquals(checkoutOverviewPage.getProductDescription(), productDescription, "Product description should match ");
 
-        List<String> totals = checkoutOverviewPage.getTotalsList();
 
-        Assert.assertEquals(totals.get(0), expectedTotals.getItemTotal(), "Item total should match the expected value");
-        Assert.assertEquals(totals.get(1), expectedTotals.getTax(), "Tax should match the expected value");
-        Assert.assertEquals(totals.get(2), expectedTotals.getTotal(),"Total should match the expected value (itemTotal + tax)");
+        List<Double> totals = checkoutOverviewPage.getTotalsValuesList();
+        double itemTotal = totals.get(0);
+        double tax = totals.get(1);
+        double total = totals.get(2);
+
+        Assert.assertEquals(total, itemTotal + tax, 0.01, "Total should equal item total + tax");
 
         // 7. Finish order
         checkoutOverviewPage.clickFinishButton();

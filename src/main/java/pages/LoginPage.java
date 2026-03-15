@@ -1,17 +1,11 @@
 package pages;
-
-import driver.WaitUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class LoginPage extends BasePage {
 
-    private WaitUtils waitUtils;
-
-    // Constructor
-    public LoginPage(WebDriver driver, WaitUtils waitUtils) {
+    public LoginPage(WebDriver driver) {
         super(driver);
-        this.waitUtils = waitUtils;
     }
 
     // Locators

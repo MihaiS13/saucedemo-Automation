@@ -14,7 +14,4 @@ public class BasePage {
 
     }
 
-    public void navigate(String url) {
-        driver.get(url);
-    }
 }

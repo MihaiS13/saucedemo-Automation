@@ -1,6 +1,4 @@
 package pages;
-
-import driver.WaitUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -9,18 +7,14 @@ import org.openqa.selenium.support.ui.Select;
 import java.util.List;
 
 public class ProductsPage extends BasePage {
-    private WaitUtils waitUtils;
 
-    // Constructor
-    public ProductsPage(WebDriver driver, WaitUtils waitUtils) {
+    public ProductsPage(WebDriver driver) {
         super(driver);
-        this.waitUtils = waitUtils;
     }
 
     // Locatori
     private By title = By.xpath("//div/span[@class='title']");
     private By cartButton = By.xpath("//div/a[@class='shopping_cart_link']");
-    private By addToCartButton = By.id("add-to-cart-sauce-labs-backpack");
     private By firstProduct = By.className("inventory_item_name");
     private By sortDropdown = By.className("product_sort_container");
     private By itemNames = By.className("inventory_item_name");
@@ -41,12 +35,9 @@ public class ProductsPage extends BasePage {
         driver.findElement(cartButton).click();
     }
 
-    public void clickAddToCartButton() {
-        waitUtils.visibilityOfElementLocated(addToCartButton).click();
+    public void openFirstProduct() {
+        waitUtils.clickWhenClickable(firstProduct);
     }
-
-    public void openFirstProduct() {waitUtils.visibilityOfElementLocated(firstProduct).click();}
-
     public void selectSortOption(String optionText) {
         Select select = new Select(driver.findElement(sortDropdown));
         select.selectByVisibleText(optionText);
@@ -74,11 +65,17 @@ public class ProductsPage extends BasePage {
         waitUtils.visibilityOfElementLocated(logoutButton).click();
     }
 
-    public void clickProduct(String productName) {By productLocator = By.xpath("//div[text()='" + productName + "']");
-
+    public void clickAddToCartButton(String productName) {
+        By productLocator = By.xpath("//div[text()='" + productName + "']");
         waitUtils.visibilityOfElementLocated(productLocator);
-
         driver.findElement(productLocator).click();
-
     }
+
+    public void clickAddToCartFirstProduct() {
+        By addButton = By.xpath("//button[contains(@id,'add-to-cart')]");
+        waitUtils.visibilityOfElementLocated(addButton).click();
+    }
+
 }
+
+

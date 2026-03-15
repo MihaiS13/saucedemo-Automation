@@ -35,11 +35,5 @@ public class DriverFactory {
 
         return driver;
     }
-    public static WebDriver closeDriver() {
-        driver.quit();
-        return driver;
-    }
-
-
 
 }

@@ -1,16 +1,11 @@
 package pages;
-
-import driver.WaitUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class CartPage extends BasePage {
 
-    private WaitUtils waitUtils;
-
-    public CartPage(WebDriver driver, WaitUtils waitUtils) {
+    public CartPage(WebDriver driver) {
         super(driver);
-        this.waitUtils = waitUtils;
     }
 
     // locators
@@ -23,9 +18,6 @@ public class CartPage extends BasePage {
     private By cartPrice = By.className("inventory_item_price");
     // actions
 
-    public String getProductPrice() {
-        return waitUtils.visibilityOfElementLocated(cartPrice).getText();
-    }
 
     public boolean isProductDisplayed() {
         return waitUtils.visibilityOfElementLocated(sauceLabsBackpackProduct).isDisplayed();
@@ -50,6 +42,11 @@ public class CartPage extends BasePage {
 
     public String getProductDescription() {
         return waitUtils.visibilityOfElementLocated(productDescriptionInCart).getText();
+    }
+    public double getProductPriceValue() {
+        String priceText = waitUtils.visibilityOfElementLocated(cartPrice).getText();
+        priceText = priceText.replaceAll("[^0-9.]", "").trim();
+        return Double.parseDouble(priceText);
     }
 }
 

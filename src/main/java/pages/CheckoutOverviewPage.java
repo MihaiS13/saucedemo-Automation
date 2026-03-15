@@ -1,20 +1,14 @@
 package pages;
-
-import driver.WaitUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import testData.classes.CheckoutData;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class CheckoutOverviewPage extends BasePage {
 
-    private WaitUtils waitUtils;
 
-    public CheckoutOverviewPage(WebDriver driver, WaitUtils waitUtils) {
+    public CheckoutOverviewPage(WebDriver driver) {
         super(driver);
-        this.waitUtils = waitUtils;
     }
 
     //locators
@@ -38,20 +32,31 @@ public class CheckoutOverviewPage extends BasePage {
         waitUtils.visibilityOfElementLocated(finishButton).click();
     }
 
-    public String getItemTotalText() {
-        return waitUtils.visibilityOfElementLocated(itemTotal).getText();
+    public double getItemTotalValue() {
+        String text = waitUtils.visibilityOfElementLocated(itemTotal).getText(); // "Item total: $29.99" >> 29.99
+        text = text.replaceAll("[^0-9.]", "");
+        return Double.parseDouble(text);
     }
 
-    public String getTaxText() {
-        return waitUtils.visibilityOfElementLocated(tax).getText();
+    public double getTaxValue() {
+        String text = waitUtils.visibilityOfElementLocated(tax).getText(); // "Tax: $2.40" >> 2.40
+        text = text.replaceAll("[^0-9.]", "");
+        return Double.parseDouble(text);
     }
 
-    public List<String> getTotalsList() {
-        List<String> totals = new ArrayList<>();
-        totals.add(waitUtils.visibilityOfElementLocated(itemTotal).getText());
-        totals.add(waitUtils.visibilityOfElementLocated(tax).getText());
-        totals.add(waitUtils.visibilityOfElementLocated(total).getText());
+    public double getTotalValue() {
+        String text = waitUtils.visibilityOfElementLocated(total).getText(); // "Total: $32.39" >> 32.39
+        text = text.replaceAll("[^0-9.]", "");
+        return Double.parseDouble(text);
+    }
+
+    public List<Double> getTotalsValuesList() {
+        List<Double> totals = new ArrayList<>();
+        totals.add(getItemTotalValue());
+        totals.add(getTaxValue());
+        totals.add(getTotalValue());
         return totals;
     }
+
 }
 

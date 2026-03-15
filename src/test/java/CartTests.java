@@ -15,7 +15,7 @@ public class CartTests extends BaseTests {
 
     @Test
     public void addAndRemoveProductFromCart() {
-        productsPage.clickAddToCartButton();
+        productsPage.clickAddToCartFirstProduct();
         productsPage.clickCartButton();
         Assert.assertTrue(cartPage.isCartHeaderDisplayed(), "Cart header should be displayed after opening cart");
         Assert.assertTrue(cartPage.isProductDisplayed(), "Product should be displayed after adding to cart");

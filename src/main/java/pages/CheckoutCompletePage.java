@@ -1,17 +1,12 @@
 package pages;
-
-import driver.WaitUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 
 public class CheckoutCompletePage extends BasePage {
 
-    private WaitUtils waitUtils;
-
-    public CheckoutCompletePage(WebDriver driver, WaitUtils waitUtils) {
+    public CheckoutCompletePage(WebDriver driver) {
         super(driver);
-        this.waitUtils = waitUtils;
     }
 
     //locators
@@ -36,6 +31,7 @@ public class CheckoutCompletePage extends BasePage {
     public void clickBackHomeButton() {
         waitUtils.visibilityOfElementLocated(backHomeButton).click();
     }
+
     public boolean isCompleteHeaderDisplayed() {
         return driver.findElement(completeHeader).isDisplayed();
     }
