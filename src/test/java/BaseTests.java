@@ -11,7 +11,6 @@ import org.testng.annotations.BeforeMethod;
 import pages.*;
 import testData.URL;
 import testData.classes.CheckoutData;
-import testData.classes.ExpectedTotals;
 import testData.classes.LoginData;
 
 
@@ -30,7 +29,6 @@ public class BaseTests {
     protected LoginData validUser;
     protected LoginData invalidUser;
     protected LoginData lockedUser;
-    protected ExpectedTotals expectedTotals;
     protected CheckoutData checkoutData;
 
     @BeforeMethod
@@ -51,7 +49,6 @@ public class BaseTests {
         validUser = new LoginData("validUser");
         invalidUser = new LoginData("invalidUser");
         lockedUser = new LoginData("lockedUser");
-        expectedTotals = new ExpectedTotals("expectedTotals");
         checkoutData = new CheckoutData("checkoutData");
         driver.get(URL.MAIN_URL);
     }
