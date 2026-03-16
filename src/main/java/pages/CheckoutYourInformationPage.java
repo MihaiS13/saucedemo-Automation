@@ -18,24 +18,25 @@ public class CheckoutYourInformationPage extends BasePage {
 
     //actions
     public String getCheckoutHeaderText() {
-        return waitUtils.visibilityOfElementLocated(checkoutHeader).getText();
+        return getText(checkoutHeader);
     }
 
     public void clickContinue() {
-        waitUtils.visibilityOfElementLocated(continueButton).click();
+        click(continueButton);
     }
-    //checkoutDataMetods
+
+    // checkoutDataMethods
     public void enterCheckoutInformation(CheckoutData data) {
-        waitUtils.visibilityOfElementLocated(firstNameInput).sendKeys(data.getFirstName());
-        waitUtils.visibilityOfElementLocated(lastNameInput).sendKeys(data.getLastName());
-        waitUtils.visibilityOfElementLocated(postalCodeInput).sendKeys(data.getPostalCode());
-        waitUtils.visibilityOfElementLocated(continueButton).click();
+        type(firstNameInput, data.getFirstName());
+        type(lastNameInput, data.getLastName());
+        type(postalCodeInput, data.getPostalCode());
+        click(continueButton);
     }
 
     public void enterInvalidCheckoutInformation(String firstName, String lastName, String postalCode) {
-        waitUtils.visibilityOfElementLocated(firstNameInput).sendKeys(firstName);
-        waitUtils.visibilityOfElementLocated(lastNameInput).sendKeys(lastName);
-        waitUtils.visibilityOfElementLocated(postalCodeInput).sendKeys(postalCode);
-        waitUtils.visibilityOfElementLocated(continueButton).click();
+        type(firstNameInput, firstName);
+        type(lastNameInput, lastName);
+        type(postalCodeInput, postalCode);
+        click(continueButton);
     }
 }

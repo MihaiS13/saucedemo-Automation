@@ -17,34 +17,33 @@ public class LoginPage extends BasePage {
     private By lockedError = By.xpath("//div/h3[@data-test=\"error\"]");
 
 
-
     // Actions
     public void enterUsername(String username) {
-        driver.findElement(usernameInput).sendKeys(username);
+        type(usernameInput, username);
     }
 
     public void enterPassword(String password) {
-        driver.findElement(passwordInput).sendKeys(password);
+        type(passwordInput, password);
     }
 
     public void clickLoginButton() {
-        driver.findElement(loginButton).click();
+        click(loginButton);
     }
 
     public String getLogoText() {
-        return waitUtils.visibilityOfElementLocated(logo).getText();
+        return getText(logo);
     }
 
     public String getError() {
-        return waitUtils.visibilityOfElementLocated(errorMessage).getText();
+        return getText(errorMessage);
     }
 
     public String getLockedError() {
-        return waitUtils.visibilityOfElementLocated(lockedError).getText();
+        return getText(lockedError);
     }
 
     public boolean isLoginButtonDisplayed() {
-        return driver.findElement(loginButton).isDisplayed();
+        return isDisplayed(loginButton);
     }
 
     public void authenticate(String username, String password) {

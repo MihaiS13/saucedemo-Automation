@@ -17,26 +17,24 @@ public class ProductDetailsPage extends BasePage {
     //actions
 
     public String getProductDescription() {
-        return waitUtils.visibilityOfElementLocated(productDescription).getText();
+        return getText(productDescription);
     }
 
-    public void clickAddToCartButton(){
-        waitUtils.visibilityOfElementLocated(addToCartButton).click();
+    public void clickAddToCartButton() {
+        click(addToCartButton);
     }
 
-    public void clickBackToProductsButton(){
-        waitUtils.visibilityOfElementLocated(backToProductsButton).getText();
+    public void clickBackToProductsButton() {
+        click(backToProductsButton);
     }
 
-    public void clickCartButton(){
-        waitUtils.visibilityOfElementLocated(cartButton).click();
+    public void clickCartButton() {
+        click(cartButton);
     }
 
     public double getProductPriceValue() {
-        String priceText = waitUtils.visibilityOfElementLocated(productPrice).getText();
+        String priceText = getText(productPrice);
         priceText = priceText.replaceAll("[^0-9.]", "").trim();
         return Double.parseDouble(priceText);
     }
-
 }
-

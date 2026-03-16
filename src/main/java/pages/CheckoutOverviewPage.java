@@ -21,31 +21,31 @@ public class CheckoutOverviewPage extends BasePage {
 
     // Actions
     public String getHeaderText() {
-        return waitUtils.visibilityOfElementLocated(header).getText();
+        return getText(header);
     }
 
     public String getProductDescription() {
-        return waitUtils.visibilityOfElementLocated(productDescription).getText();
+        return getText(productDescription);
     }
 
     public void clickFinishButton() {
-        waitUtils.visibilityOfElementLocated(finishButton).click();
+        click(finishButton);
     }
 
     public double getItemTotalValue() {
-        String text = waitUtils.visibilityOfElementLocated(itemTotal).getText(); // "Item total: $29.99" >> 29.99
+        String text = getText(itemTotal); // "Item total: $29.99" >> 29.99
         text = text.replaceAll("[^0-9.]", "");
         return Double.parseDouble(text);
     }
 
     public double getTaxValue() {
-        String text = waitUtils.visibilityOfElementLocated(tax).getText(); // "Tax: $2.40" >> 2.40
+        String text = getText(tax); // "Tax: $2.40" >> 2.40
         text = text.replaceAll("[^0-9.]", "");
         return Double.parseDouble(text);
     }
 
     public double getTotalValue() {
-        String text = waitUtils.visibilityOfElementLocated(total).getText(); // "Total: $32.39" >> 32.39
+        String text = getText(total); // "Total: $32.39" >> 32.39
         text = text.replaceAll("[^0-9.]", "");
         return Double.parseDouble(text);
     }
@@ -57,6 +57,4 @@ public class CheckoutOverviewPage extends BasePage {
         totals.add(getTotalValue());
         return totals;
     }
-
 }
-

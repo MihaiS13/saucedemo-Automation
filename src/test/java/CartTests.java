@@ -18,7 +18,7 @@ public class CartTests extends BaseTests {
         productsPage.clickAddToCartFirstProduct();
         productsPage.clickCartButton();
         Assert.assertTrue(cartPage.isCartHeaderDisplayed(), "Cart header should be displayed after opening cart");
-        Assert.assertTrue(cartPage.isProductDisplayed(), "Product should be displayed after adding to cart");
+        Assert.assertTrue(cartPage.isProductDisplayed("Sauce Labs Backpack"), "Product should be displayed after adding to cart");
         cartPage.clickRemoveButton();
         Assert.assertTrue(cartPage.isCartEmpty(), "Cart should be empty after removing the product");
     }

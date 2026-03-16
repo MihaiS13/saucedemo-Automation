@@ -16,28 +16,12 @@ public class CheckoutCompletePage extends BasePage {
     private By completeText = By.className("complete-text");
 
     // Actions
-    public String getHeaderText() {
-        return waitUtils.visibilityOfElementLocated(header).getText();
-    }
-
-    public String getCompleteHeaderText() {
-        return waitUtils.visibilityOfElementLocated(completeHeader).getText();
-    }
-
-    public String getCompleteText() {
-        return waitUtils.visibilityOfElementLocated(completeText).getText();
-    }
-
-    public void clickBackHomeButton() {
-        waitUtils.visibilityOfElementLocated(backHomeButton).click();
-    }
-
     public boolean isCompleteHeaderDisplayed() {
-        return driver.findElement(completeHeader).isDisplayed();
+        return isDisplayed(completeHeader);
     }
 
     public boolean isCompleteTextDisplayed() {
-        return driver.findElement(completeText).isDisplayed();
+        return isDisplayed(completeText);
     }
 
 }

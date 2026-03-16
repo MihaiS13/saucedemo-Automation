@@ -34,7 +34,7 @@ public class BookingTests extends BaseTests {
 
                 Assert.assertEquals(cartPrice, productPrice, "Product price in cart should match product page");
                 Assert.assertTrue(cartPage.isCartHeaderDisplayed(), "Cart header should be displayed after clicking cart");
-                Assert.assertTrue(cartPage.isProductDisplayed(), "Product should be displayed");
+                Assert.assertTrue(cartPage.isProductDisplayed("Sauce Labs Backpack"), "Product should be displayed");
                 Assert.assertEquals(cartPage.getProductDescription(), productDescription, "Product description in cart should match product page");
 
                 // 3. Checkout – user details

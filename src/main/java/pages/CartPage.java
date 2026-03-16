@@ -11,16 +11,15 @@ public class CartPage extends BasePage {
     // locators
     private By removeButton = By.id("remove-sauce-labs-backpack");
     private By yourCartHeader = By.xpath("//span[@class='title']");
-    private By sauceLabsBackpackProduct = By.xpath("//div[contains(text(),'Sauce Labs Backpack')]");
     private By checkoutButton = By.id("checkout");
     private By productDescriptionInCart = By.className("inventory_item_desc");
     private By cartItems = By.className("cart_item");
     private By cartPrice = By.className("inventory_item_price");
     // actions
 
-
-    public boolean isProductDisplayed() {
-        return waitUtils.visibilityOfElementLocated(sauceLabsBackpackProduct).isDisplayed();
+    public boolean isProductDisplayed(String productName) {
+        By productLocator = By.xpath("//div[contains(text(),'" + productName + "')]");
+        return waitUtils.visibilityOfElementLocated(productLocator).isDisplayed();
     }
 
     public boolean isCartEmpty() {
@@ -28,23 +27,23 @@ public class CartPage extends BasePage {
     }
 
     public void clickRemoveButton() {
-        waitUtils.visibilityOfElementLocated(removeButton).click();
+        click(removeButton);
     }
 
     public boolean isCartHeaderDisplayed() {
-        return waitUtils.visibilityOfElementLocated(yourCartHeader).isDisplayed();
+        return isDisplayed(yourCartHeader);
     }
 
     public void clickCheckoutButton() {
-        waitUtils.visibilityOfElementLocated(checkoutButton).click();
-
+        click(checkoutButton);
     }
 
     public String getProductDescription() {
-        return waitUtils.visibilityOfElementLocated(productDescriptionInCart).getText();
+        return getText(productDescriptionInCart);
     }
+
     public double getProductPriceValue() {
-        String priceText = waitUtils.visibilityOfElementLocated(cartPrice).getText();
+        String priceText = getText(cartPrice);
         priceText = priceText.replaceAll("[^0-9.]", "").trim();
         return Double.parseDouble(priceText);
     }
