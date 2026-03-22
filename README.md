@@ -7,9 +7,9 @@ This framework automates testing of the SauceDemo application using Java + Selen
 
 [![Selenium Tests with Allure Report](https://github.com/MihaiS13/saucedemo-Automation/actions/workflows/selenium-allure.yml/badge.svg)](https://github.com/MihaiS13/saucedemo-Automation/actions/workflows/selenium-allure.yml)  
 [![Allure Report](https://img.shields.io/badge/Allure-Report-blue)](https://mihais13.github.io/saucedemo-Automation/)  
-[![Build parallel-tests](https://github.com/MihaiS13/saucedemo-Automation/actions/workflows/selenium-allure.yml/badge.svg?branch=parallel-tests)](https://github.com/MihaiS13/saucedemo-Automation/actions/workflows/selenium-allure.yml)
 
 ⚠ Allure automatically captures screenshots on every failed test in the @AfterMethod
+![Allure Test Report](allure-screenshot.png)
 
 ---
 
@@ -84,8 +84,9 @@ allure open
 Allure reports include:
 
 Executed test cases and their statuses
-Screenshots automatically captured for failed tests (captured in @AfterMethod)
 Trends and statistics
+Screenshots automatically captured for failed tests (captured in @AfterMethod)
+![Allure Test Report](allure-screenshot.png)
 
 🔧 Parallel Testing
 
