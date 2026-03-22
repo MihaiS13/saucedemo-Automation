@@ -30,12 +30,14 @@ This framework automates testing of the SauceDemo application using Java + Selen
 ---
 
 ## 📂 Project Structure
+
 ```
 saucedemo-Automation/
 ├── src
 │   ├── main/java
 │   │   ├── driver/       # WebDriver Factory & Wait utils
 │   │   ├── pages/        # Page Object Model classes
+│   │   │   └── BasePage.java # BasePage: reusable methods (click, type, getText, select)
 │   │   └── testData/     # JSON test data & classes
 │   └── test/java
 │       ├── tests/        # Test classes
@@ -44,6 +46,15 @@ saucedemo-Automation/
 ├── testng.xml             # TestNG suite (parallel-enabled)
 └── README.md
 ```
+📐 BasePage – Code Reusability & Abstraction
+
+To reduce code duplication and improve maintainability, the framework uses a BasePage class that:
+
+Encapsulates common WebDriver actions like click, type, getText, isDisplayed, and dropdown selection.
+Integrates WaitUtils to ensure elements are visible before interacting.
+Serves as a parent class for all Page Objects, promoting clean and reusable Page Object Model design.
+
+This makes adding new pages and tests much faster while keeping the framework scalable and maintainable.
 
 ---
 
