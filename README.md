@@ -5,13 +5,9 @@ This framework automates testing of the SauceDemo application using Java + Selen
 
 ## 🏷️ Badges
 
-![Build Status](https://github.com/MihaiS13/saucedemo-Automation/actions/workflows/maven.yml/badge.svg)  
-[![Allure Report](https://img.shields.io/badge/Allure-Report-blue?logo=allure)](https://mihais13.github.io/saucedemo-Automation/)  
-![Branch](https://img.shields.io/badge/Branch-parallel--tests-green?logo=git)  
-![Java Version](https://img.shields.io/badge/Java-17-orange?logo=java)  
-![Maven Version](https://img.shields.io/badge/Maven-3.9.1-blue?logo=apachemaven)  
-![License](https://img.shields.io/badge/License-MIT-green)
-
+[![Selenium Tests with Allure Report](https://github.com/MihaiS13/saucedemo-Automation/actions/workflows/selenium-allure.yml/badge.svg)](https://github.com/MihaiS13/saucedemo-Automation/actions/workflows/selenium-allure.yml)  
+[![Allure Report](https://img.shields.io/badge/Allure-Report-blue)](https://mihais13.github.io/saucedemo-Automation/)  
+[![Build parallel-tests](https://github.com/MihaiS13/saucedemo-Automation/actions/workflows/selenium-allure.yml/badge.svg?branch=parallel-tests)](https://github.com/MihaiS13/saucedemo-Automation/actions/workflows/selenium-allure.yml)
 
 ⚠ Allure automatically captures screenshots on every failed test in the @AfterMethod
 
@@ -50,18 +46,18 @@ saucedemo-Automation/
 ---
 
 🧪 Test Coverage
-Login – positive, negative, and locked user scenarios
-Cart functionality – add/remove items, validations
-Checkout – end-to-end checkout scenarios
-Data-driven testing – using JSON files for users and checkout data
-Parallel execution – reduces test runtime with thread-safe WebDriver
-Allure reporting – captures screenshots automatically in @AfterMethod when a test fails
+- **Login** – positive, negative, and locked user scenarios  
+- **Cart functionality** – add/remove items, validations  
+- **Checkout** – end-to-end checkout scenarios  
+- **Data-driven testing** – using JSON files for users and checkout data  
+- **Parallel execution** – reduces test runtime with thread-safe WebDriver  
+- **Allure reporting** – automatically captures screenshots in `@AfterMethod` for failed tests  
 
-Sample test flows:
+**Sample test flows:**
 
-Login → Add item → Checkout → Order confirmation
-Login → Invalid credentials → Error message
-Locked user login → Proper error displayed
+- Login → Add item → Checkout → Order confirmation  
+- Login → Invalid credentials → Error message  
+- Locked user login → Proper error displayed  
 
 ---
 
@@ -94,7 +90,7 @@ Trends and statistics
 🔧 Parallel Testing
 
 The TestNG suite (testng.xml) is configured for parallel execution:
-<suite name="SauceDemo Suite" parallel="methods" thread-count="4">
+<suite name="SauceDemo Suite" parallel="methods" thread-count="2">
     <test name="All Tests">
         <packages>
             <package name="test"/>
@@ -112,7 +108,7 @@ Generates Allure report automatically
 Workflow tested on Windows and Linux
 
 Badge example:
-![Build](https://github.com/MihaiS13/saucedemo-Automation/actions/workflows/maven.yml/badge.svg)
+[![Selenium Tests with Allure Report](https://github.com/MihaiS13/saucedemo-Automation/actions/workflows/selenium-allure.yml/badge.svg)](https://github.com/MihaiS13/saucedemo-Automation/actions/workflows/selenium-allure.yml) 
 
 💡 Best Practices Demonstrated
 Page Object Model (POM) design
