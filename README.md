@@ -30,18 +30,20 @@ This framework automates testing of the SauceDemo application using Java + Selen
 ---
 
 ## 📂 Project Structure
+```
 saucedemo-Automation/
 ├── src
 │   ├── main/java
-│   │   ├── driver/…       # WebDriver Factory & Wait utils
-│   │   ├── pages/…        # Page Object Model classes
-│   │   └── testData/…     # JSON test data & classes
+│   │   ├── driver/       # WebDriver Factory & Wait utils
+│   │   ├── pages/        # Page Object Model classes
+│   │   └── testData/     # JSON test data & classes
 │   └── test/java
-│       ├── tests/…        # Test classes
+│       ├── tests/        # Test classes
 │       └── BaseTests.java # Base test setup with driver, waits, Allure screenshots
 ├── pom.xml                # Maven configuration
 ├── testng.xml             # TestNG suite (parallel-enabled)
 └── README.md
+```
 
 ---
 
