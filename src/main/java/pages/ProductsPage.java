@@ -1,6 +1,5 @@
 package pages;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 
@@ -8,8 +7,8 @@ import java.util.List;
 
 public class ProductsPage extends BasePage {
 
-    public ProductsPage(WebDriver driver) {
-        super(driver);
+    public ProductsPage() {
+        super();
     }
 
     // Locatori
@@ -44,14 +43,16 @@ public class ProductsPage extends BasePage {
     }
 
     public List<String> getProductNames() {
-        return driver.findElements(itemNames)
+        waitUtils.visibilityOfElementLocated(itemNames);
+        return getDriver().findElements(itemNames)
                 .stream()
                 .map(WebElement::getText)
                 .toList();
     }
 
     public List<Double> getProductPrices() {
-        return driver.findElements(itemPrices)
+        waitUtils.visibilityOfElementLocated(itemPrices);
+        return getDriver().findElements(itemPrices)
                 .stream()
                 .map(e -> Double.parseDouble(e.getText().replace("$", "")))
                 .toList();

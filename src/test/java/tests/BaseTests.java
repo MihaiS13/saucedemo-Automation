@@ -1,3 +1,5 @@
+package tests;
+
 import driver.DriverFactory;
 import driver.WaitUtils;
 import io.qameta.allure.Attachment;
@@ -16,8 +18,7 @@ import testData.classes.LoginData;
 
 public class BaseTests {
 
-    protected WebDriver driver;
-    protected WaitUtils waitUtils;
+    //Page initialization
     protected LoginPage loginPage;
     protected ProductsPage productsPage;
     protected CartPage cartPage;
@@ -26,6 +27,7 @@ public class BaseTests {
     protected CheckoutYourInformationPage checkoutYourInformationPage;
     protected CheckoutCompletePage checkoutCompletePage;
 
+    //Data initialization
     protected LoginData validUser;
     protected LoginData invalidUser;
     protected LoginData lockedUser;
@@ -33,44 +35,46 @@ public class BaseTests {
 
     @BeforeMethod
     public void before() {
-        driver = DriverFactory.getDriver();
-        DriverFactory.driver = driver;
+        System.out.println("Thread ID: " + Thread.currentThread().getId());
+
+        DriverFactory.initDriver();
+
         //  WaitUtils and Pages initialization
-        waitUtils = new WaitUtils(driver);
-        loginPage = new LoginPage(driver);
-        productsPage = new ProductsPage(driver);
-        cartPage = new CartPage(driver);
-        productDetailsPage = new ProductDetailsPage(driver);
-        checkoutYourInformationPage = new CheckoutYourInformationPage(driver);
-        checkoutOverviewPage = new CheckoutOverviewPage(driver);
-        checkoutCompletePage = new CheckoutCompletePage(driver);
+        loginPage = new LoginPage();
+        productsPage = new ProductsPage();
+        cartPage = new CartPage();
+        productDetailsPage = new ProductDetailsPage();
+        checkoutYourInformationPage = new CheckoutYourInformationPage();
+        checkoutOverviewPage = new CheckoutOverviewPage();
+        checkoutCompletePage = new CheckoutCompletePage();
 
         // data initialization
         validUser = new LoginData("validUser");
         invalidUser = new LoginData("invalidUser");
         lockedUser = new LoginData("lockedUser");
         checkoutData = new CheckoutData("checkoutData");
-        driver.get(URL.MAIN_URL);
+
+        //Navigate to URL
+        DriverFactory.getDriver().get(URL.MAIN_URL);
     }
 
 
     @AfterMethod
     public void afterMethod(ITestResult result) {
         // If test fails, take a screenshoot
-        if (result.getStatus() == ITestResult.FAILURE && driver != null) {
+        if (result.getStatus() == ITestResult.FAILURE && DriverFactory.getDriver() != null) {
             saveScreenshot(result.getName());
         }
 
-        // Close the browser.
-        if (driver != null) {
-            driver.quit();
+        if (DriverFactory.getDriver() != null) {
+            DriverFactory.quitDriver();
         }
     }
 
     // Screenshoot method for Allure
     @Attachment(value = "Page screenshot", type = "image/png")
     public byte[] saveScreenshot(String testName) {
-        return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+        return ((TakesScreenshot) DriverFactory.getDriver()).getScreenshotAs(OutputType.BYTES);
     }
 
 

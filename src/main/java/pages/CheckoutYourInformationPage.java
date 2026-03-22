@@ -1,12 +1,11 @@
 package pages;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import testData.classes.CheckoutData;
 
 public class CheckoutYourInformationPage extends BasePage {
 
-    public CheckoutYourInformationPage(WebDriver driver) {
-        super(driver);
+    public CheckoutYourInformationPage() {
+        super();
     }
 
     // locators

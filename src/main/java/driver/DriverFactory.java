@@ -7,9 +7,9 @@ import org.openqa.selenium.chrome.ChromeOptions;
 
 public class DriverFactory {
 
-    public static WebDriver driver;
+    private static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
 
-    public static WebDriver getDriver() {
+    public static void initDriver() {
 
         ChromeOptions chromeOption = new ChromeOptions();
         // Essential for GitHub Actions (Linux environment)
@@ -30,10 +30,23 @@ public class DriverFactory {
         chromeOption.addArguments("disable-extensions"); // Disable extensions
         chromeOption.addArguments("guest"); // Disable change password popup
 
-        driver = new ChromeDriver(chromeOption);
-
-
-        return driver;
+        //Every thread gets his own driver
+        driver.set(new ChromeDriver(chromeOption));
     }
 
+    public static WebDriver getDriver() {
+        return driver.get();
+    }
+
+    public static void quitDriver() {
+        if (driver.get() != null) {
+            try {
+                driver.get().quit(); //
+            } catch (Exception e) {
+
+            } finally {
+                driver.remove();
+            }
+        }
+    }
 }

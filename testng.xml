@@ -1,0 +1,14 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="SauceDemo Suite" parallel="classes" thread-count="2">
+
+    <test name="All Tests">
+
+        <packages>
+            <package name="tests" />
+        </packages>
+
+
+    </test>
+
+</suite>

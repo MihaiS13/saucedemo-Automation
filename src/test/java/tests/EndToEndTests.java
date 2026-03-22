@@ -1,6 +1,8 @@
+package tests;
+
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import testData.classes.CheckoutData;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
