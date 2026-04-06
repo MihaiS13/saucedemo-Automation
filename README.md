@@ -94,7 +94,7 @@ TestNG will execute tests according to the suite defined in testng.xml.
 
 After test execution:
 
-allure generate ./allure-results --clean
+allure generate target/allure-results --clean
 
 allure open
 
@@ -125,7 +125,6 @@ Tests run automatically on each push or pull request
 Generates Allure report automatically
 Workflow tested on Windows and Linux
 
-Badge example:
 [![Selenium Tests with Allure Report](https://github.com/MihaiS13/saucedemo-Automation/actions/workflows/selenium-allure.yml/badge.svg)](https://github.com/MihaiS13/saucedemo-Automation/actions/workflows/selenium-allure.yml) 
 
 💡 Best Practices Demonstrated
