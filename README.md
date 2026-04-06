@@ -79,11 +79,13 @@ This makes adding new pages and tests much faster while keeping the framework sc
 1️⃣ Clone Repository
 
 git clone https://github.com/MihaiS13/saucedemo-Automation.git
+
 cd saucedemo-Automation
 
 2️⃣ Compile & Run Tests
 
 mvn clean compile
+
 mvn clean test
 
 TestNG will execute tests according to the suite defined in testng.xml.
@@ -91,7 +93,9 @@ TestNG will execute tests according to the suite defined in testng.xml.
 3️⃣ Allure Reporting
 
 After test execution:
+
 allure generate ./allure-results --clean
+
 allure open
 
 Allure reports include:

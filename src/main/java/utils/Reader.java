@@ -22,7 +22,7 @@ public class Reader {
             JSONParser jsonParser = new JSONParser();
             obj = (JSONObject) jsonParser.parse(reader);
         } catch (IOException | ParseException e) {
-            System.err.println("Eroare la citirea fișierului JSON: " + jsonPath);
+            System.err.println("Error reading the JSON file: " + jsonPath);
             e.printStackTrace();
         }
 
