@@ -134,11 +134,12 @@ Workflow tested on Windows and Linux
 [![Selenium Tests with Allure Report](https://github.com/MihaiS13/saucedemo-Automation/actions/workflows/selenium-allure.yml/badge.svg)](https://github.com/MihaiS13/saucedemo-Automation/actions/workflows/selenium-allure.yml) 
 
 💡 Best Practices Demonstrated
-Page Object Model (POM) design
-"Data-driven testing using TestNG @DataProvider and JSON files"
-Parallel execution using TestNG and ThreadLocal WebDriver
-Detailed reporting with screenshots
-CI/CD automation via GitHub Actions
+
+- Page Object Model (POM) design
+- Data-driven testing using TestNG @DataProvider and JSON files
+- Parallel execution using TestNG and ThreadLocal WebDriver
+- Detailed reporting with screenshots
+- CI/CD automation via GitHub Actions
 
 📌 Conclusion
 
