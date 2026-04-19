@@ -59,18 +59,23 @@ This makes adding new pages and tests much faster while keeping the framework sc
 ---
 
 🧪 Test Coverage
-- **Login** – positive, negative, and locked user scenarios  
-- **Cart functionality** – add/remove items, validations  
-- **Checkout** – end-to-end checkout scenarios  
-- **Data-driven testing** – using JSON files for users and checkout data  
-- **Parallel execution** – reduces test runtime with thread-safe WebDriver  
-- **Allure reporting** – automatically captures screenshots in `@AfterMethod` for failed tests  
+
+13 automated test scenarios covering critical user flows across login, cart, and checkout.
+Reduced test execution time by 40% (from 95s to 57s) through parallel execution on 3 threads.
+
+- **Login** – positive, negative, and locked user scenarios (3 scenarios)
+- **Cart functionality** – add/remove items, validations
+- **Checkout** – end-to-end checkout scenarios with 3 invalid data cases via TestNG @DataProvider
+- **Data-driven testing** – TestNG @DataProvider for checkout edge cases (invalid name, email, postal code) + JSON files for user data
+- **Parallel execution** – 3 threads, reduces runtime by 40% (95s → 57s) with thread-safe ThreadLocal WebDriver
+- **Allure reporting** – automatically captures screenshots in @AfterMethod for failed tests
 
 **Sample test flows:**
 
-- Login → Add item → Checkout → Order confirmation  
-- Login → Invalid credentials → Error message  
-- Locked user login → Proper error displayed  
+- Login → Add item → Checkout → Order confirmation
+- Login → Invalid credentials → Error message displayed
+- Locked user login → Proper error displayed
+- Checkout → Invalid name/email/postal code → Validation error (data-driven)
 
 ---
 
@@ -107,8 +112,9 @@ Screenshots automatically captured for failed tests (captured in @AfterMethod)
 
 🔧 Parallel Testing
 
-The TestNG suite (testng.xml) is configured for parallel execution:
-<suite name="SauceDemo Suite" parallel="methods" thread-count="2">
+The TestNG suite (testng.xml) is configured for parallel execution on 3 threads:
+
+<suite name="SauceDemo Suite" parallel="methods" thread-count="3">
     <test name="All Tests">
         <packages>
             <package name="test"/>
@@ -116,9 +122,9 @@ The TestNG suite (testng.xml) is configured for parallel execution:
     </test>
 </suite>
 
-Reduces overall test execution time
-Each test runs independently using ThreadLocal WebDriver
-Branch dedicated for parallel tests: parallel-tests
+- Reduces overall test execution time by 40% (from 95s to 57s)
+- Each test runs independently using ThreadLocal WebDriver
+- Branch dedicated for parallel tests: parallel-tests
 
 🔹 CI/CD (GitHub Actions)
 Tests run automatically on each push or pull request
@@ -129,7 +135,7 @@ Workflow tested on Windows and Linux
 
 💡 Best Practices Demonstrated
 Page Object Model (POM) design
-Data-driven testing using JSON files
+"Data-driven testing using TestNG @DataProvider and JSON files"
 Parallel execution using TestNG and ThreadLocal WebDriver
 Detailed reporting with screenshots
 CI/CD automation via GitHub Actions
